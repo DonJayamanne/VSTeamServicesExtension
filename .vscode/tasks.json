@@ -1,0 +1,60 @@
+{
+	"version": "0.1.0",
+	"command": "npm",
+	"isShellCommand": true,
+	"args": [
+		"run"
+	],
+	"taskSelector": "run",
+	"suppressTaskName": true,
+	"tasks": [
+		{
+			"taskName": "extension - build",
+			"isWatching": false,
+			"showOutput": "always",
+			"args": ["tfxBuild"]
+		},
+		{
+			"taskName": "typescript (if webpack is slow for dev)",
+			"isWatching": true,
+			"showOutput": "silent",
+			"problemMatcher": "$tsc-watch",
+			"args": [
+				"tsc"
+			]
+		},
+		{
+			//Build Task
+			"taskName": "dev (build webpack)",
+			//Run On Shift+Ctrl+B
+			"isBuildCommand": true,
+			//Don't run when Shift+Ctrl+T
+			"isTestCommand": false,
+			// Show the output window if error any
+			"showOutput": "silent",
+			//Npm Task Name
+			"args": [
+				"webpack"
+			],
+			// use 2 regex:
+			// 1st the file, then the problem       
+			"problemMatcher": {
+				"owner": "webpack",
+				"severity": "error",
+				"fileLocation": "relative",
+				"pattern": [
+					{
+						"regexp": "ERROR in (.*)",
+						"file": 1
+					},
+					{
+						"regexp": "\\((\\d+),(\\d+)\\):(.*)",
+						"line": 1,
+						"column": 2,
+						"message": 3
+					}
+				]
+			}
+		}
+	]
+}

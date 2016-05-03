@@ -1,0 +1,48 @@
+    {
+    "manifestVersion": 1,
+    "id": "sample1",
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "version": "1.0.0",
+    "name": "sample1",
+    "description": "Sample Hub created using TypeScript and WebPack.",
+    "publisher": "donjayamanne",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "hub-page",
+            "type": "ms.vss-web.hub",
+            "description": "Sample Hub Page",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "Sample Hub Page",
+                "order": 99,
+                "uri": "hub-page.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.work"
+    ],
+    "files": [
+        {
+            "path": "scripts",
+            "addressable": true
+        },
+        {
+            "path": "images/logo.png",
+            "addressable": true
+        },
+        {
+            "path": "hub-page.html",
+            "addressable": true
+        }
+    ]
+}
